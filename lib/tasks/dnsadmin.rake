@@ -30,7 +30,7 @@ namespace :dns do
 		else
 			Rake::Task['dns:db:init'].invoke
 		end
-
+		ENV['SECRET_KEY_BASE']=`rake secret`
 		pid = `cat unicorn.pid 2> /dev/null`
 		if pid.empty?
 			puts 'DNSAdmin Starting...'
@@ -48,6 +48,7 @@ namespace :dns do
 		else
 			Rake::Task['dns:db:init'].invoke
 		end
+		ENV['SECRET_KEY_BASE']=`rake secret`
 		puts 'DNSAdmin Starting...'
 		`unicorn_rails -E production -c config/unicorn.rb`
 		puts 'DNSAdmin Started!!'
