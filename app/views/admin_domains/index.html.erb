@@ -1,0 +1,30 @@
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading clearfix">
+        <div class="pull-left" style="font-size: 24px;">Domains</div>
+        <div class="pull-right">
+            <%= link_to '<span class="glyphicon glyphicon-plus"></span>'.html_safe, new_domain_path, {class: 'btn btn-default', :'data-toggle' => 'tooltip', title: 'Create Domain'} %>
+        </div>
+    </div>
+    <!-- Table -->
+    <table class="panel-body table table-hover text-center">
+        <thead>
+        </thead>
+        <tbody>
+        <% @domains.each do |domain| %>
+            <tr>
+                <td>
+                    <div class="pull-left" style="line-height: 2.5">
+                        <%= link_to "<i class='glyphicon glyphicon-list-alt'></i> #{domain.name}".html_safe, domain_path(domain), class: 'btn btn-default' %>
+                        <em style="color: #777"><%= domain.description %></em>
+                    </div>
+                    <div class="pull-right">
+                        <%= link_to 'Edit', edit_domain_path(domain), class: 'btn btn-warning' %>
+                        <%= link_to 'Delete', domain_path(domain), method: :delete, class: 'btn btn-danger', data: {confirm: 'Are you sure?'} %>
+                    </div>
+                </td>
+            </tr>
+        <% end %>
+        </tbody>
+    </table>
+</div>

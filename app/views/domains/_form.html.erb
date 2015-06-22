@@ -1,0 +1,44 @@
+<%
+   send_label = action_name.eql?('new') ? 'Create' : 'Save'
+   back_url = domains_path
+%>
+<div class="text-left col-xs-12">
+    <%= form_for @domain, :html => {role: :form, class: 'form-horizontal'} do |d| %>
+        <div class="form-group">
+            <%= d.label :name, 'Domain Name', for: :domain_name, class: 'col-xs-4 control-label' %>
+            <div class="col-xs-8"><%= d.text_field :name, class: 'form-control', readonly: !@domain.id.blank? %></div>
+        </div>
+        <div class="form-group">
+            <%= d.label :description, 'Description', for: :domain_description, class: 'col-xs-4 control-label' %>
+            <div class="col-xs-8"><%= d.text_field :description, class: 'form-control', placeholder: 'site description' %></div>
+        </div>
+        <%= fields_for @soa do |s| %>
+            <div class="form-group">
+                <%= s.label :contact, 'Administrator Contact', for: :soa_description, class: 'col-xs-4 control-label' %>
+                <div class="col-xs-8"><%= s.email_field :contact, class: 'form-control', placeholder: 'admin@example.com' %></div>
+            </div>
+            <div class="form-group">
+                <%= s.label :refresh, for: :soa_refresh, class: 'col-xs-4 control-label' %>
+                <div class="col-xs-8"><%= s.text_field :refresh, class: 'form-control', placeholder: '86400' %></div>
+            </div>
+            <div class="form-group">
+                <%= s.label :retry, for: :soa_retry, class: 'col-xs-4 control-label' %>
+                <div class="col-xs-8"><%= s.text_field :retry, class: 'form-control', placeholder: '600' %></div>
+            </div>
+            <div class="form-group">
+                <%= s.label :expire, for: :soa_expire, class: 'col-xs-4 control-label' %>
+                <div class="col-xs-8"><%= s.text_field :expire, class: 'form-control', placeholder: '86400' %></div>
+            </div>
+            <div class="form-group">
+                <%= s.label :minimum, for: :soa_minimum, class: 'col-xs-4 control-label' %>
+                <div class="col-xs-8"><%= s.text_field :minimum, class: 'form-control', placeholder: '600' %></div>
+            </div>
+        <% end %>
+        <div class="form-group">
+            <div class=" text-right col-xs-12">
+                <%= d.submit send_label, class: 'btn btn-primary', data: {disable_with: "#{send_label[0..-1]}ing"} %>
+                <%= link_to 'Back', back_url, class: 'btn btn-default' %>
+            </div>
+        </div>
+    <% end %>
+</div>

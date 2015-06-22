@@ -1,0 +1,14 @@
+<% unless alert.blank? %>
+    <div id='alert' class='col-xs-12 col-sm-8 col-sm-offset-2 alert alert-danger alert-dismissible'>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+        <%= alert %>
+    </div>
+<% end %>
+<% unless notice.blank? %>
+    <div id='notice' class='col-xs-12 col-sm-8 col-sm-offset-2 alert alert-warning alert-dismissible'>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span></button>
+        <%= notice %>
+    </div>
+<% end %>

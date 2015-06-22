@@ -1,0 +1,16 @@
+<div id="a-u-s" class="">
+    <div class="list-group">
+        <% @domains.each do |domain| %>
+            <a class="list-group-item clearfix" href="<%= domain_path(domain) %>">
+                <strong class="pull-left" style="font-size: 24px;"><%= domain.name %></strong>
+
+                <div class="pull-right">
+                    <span class="btn btn-default disabled">A <span class="badge"><%= domain.as.count %></span></span>
+                    <span class="btn btn-default disabled">CNAME <span class="badge"><%= domain.cnames.count %></span></span>
+                    <span class="btn btn-default disabled">MX <span class="badge"><%= domain.mxes.count %></span></span>
+                    <span class="btn btn-default disabled">NS <span class="badge"><%= domain.nameservers.count %></span></span>
+                </div>
+            </a>
+        <% end %>
+    </div>
+</div>

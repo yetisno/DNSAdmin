@@ -1,0 +1,5 @@
+<div>
+    <% @ptrs.each do |ptr| %>
+        <div><%= "#{ptr.ip_arpa} => #{ptr.to_name}" %></div>
+    <% end %>
+</div>

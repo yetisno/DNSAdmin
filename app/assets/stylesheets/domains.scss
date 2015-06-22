@@ -1,0 +1,28 @@
+@media screen and (min-width: 768px) and (max-width: 920px) {
+  #domain_left {
+	padding-right: 0px;
+	.btn {
+	  text-align: left;
+	}
+  }
+  #domain_right {
+	padding-left: 0px;
+	padding-right: 0px;
+	.navbar-header {
+	  .navbar-brand {
+		padding-left: 10px;
+		padding-right: 10px;
+		clear: both;
+	  }
+	}
+	#bs-example-navbar-collapse-2 {
+	  padding-left: 0px;
+	  li {
+		a {
+		  padding-left: 9px;
+		  padding-right: 9px;
+		}
+	  }
+	}
+  }
+}

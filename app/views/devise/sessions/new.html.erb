@@ -1,0 +1,27 @@
+<div id="device_sessions_new" class="container-full">
+    <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
+        <!--style="border: 1px solid black;"-->
+        <h2>Sign in</h2>
+
+        <%= form_for resource, :as => resource_name, url: session_path(resource_name), role: 'form' do |f| %>
+            <div class="form-group">
+                <%= f.label :login, {class: 'col-xs-4'} %>
+                <%= f.text_field :login, autofocus: true, class: 'col-xs-7 col-xs-offset-1' %>
+            </div>
+            <div class="form-group">
+                <%= f.label :password, {class: 'col-xs-4'} %>
+                <%= f.password_field :password, {class: 'col-xs-7 col-xs-offset-1'} %>
+            </div>
+
+            <% if devise_mapping.rememberable? -%>
+                <div class="form_remember text-right">
+                    <%= f.check_box :remember_me %>
+                    <%= f.label :remember_me %>
+                </div>
+            <% end -%>
+
+            <div><%= f.submit 'Sign in', {class: 'btn btn-success col-xs-12'} %></div>
+        <% end %>
+        <%= render "devise/shared/links" %>
+    </div>
+</div>

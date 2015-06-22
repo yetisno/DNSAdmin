@@ -1,0 +1,128 @@
+@domain_show_a_list_load = (domain_id) ->
+	$.getJSON '<%= api_domains_path %>/' + domain_id + '/as', (data) ->
+		block = $('#frame_domains_show_' + domain_id + ' .tab-pane.id-a:first')
+		flist = block.find('.skel-list')
+		rtn = block.find('.misc .format-content > table').clone()
+		tr = rtn.find('tbody tr').clone()
+		rtn.find('tbody').html('')
+		$.each data.data, (k, record) ->
+			tmptr = tr.clone()
+			tmptr.find('td:eq(0)').html record.name
+			tmptr.find('td:eq(1)').html record.to_ip
+			if(record.ddn_id == null)
+				tmptr.find('td:eq(2) a').attr 'href', record.url
+			else
+				tmptr.find('td:eq(2) a').attr 'disabled', 'disabled'
+			rtn.find('tbody').append tmptr
+			return
+		flist.html('').append(rtn)
+		block.find('.b-cancel').click()
+		$('#frame_domains_show_' + domain_id + ' .badge.nav-tab-head.id-a').html(data.counts)
+		return
+	return
+
+@domain_show_cname_list_load = (domain_id) ->
+	$.getJSON '<%= api_domains_path %>/' + domain_id + '/cnames', (data) ->
+		block = $('#frame_domains_show_' + domain_id + ' .tab-pane.id-cname:first')
+		flist = block.find('.skel-list')
+		rtn = block.find('.misc .format-content > table').clone()
+		tr = rtn.find('tbody tr').clone()
+		rtn.find('tbody').html('')
+		$.each data.data, (k, record) ->
+			tmptr = tr.clone()
+			tmptr.find('td:eq(0)').html record.name
+			tmptr.find('td:eq(1)').html record.to_name
+			tmptr.find('td:eq(2) a').attr 'href', record.url
+			rtn.find('tbody').append tmptr
+			return
+		flist.html('').append(rtn)
+		block.find('.b-cancel').click()
+		$('#frame_domains_show_' + domain_id + ' .badge.nav-tab-head.id-cname').html(data.counts)
+		return
+	return
+
+@domain_show_mx_list_load = (domain_id) ->
+	$.getJSON '<%= api_domains_path %>/' + domain_id + '/mxes', (data) ->
+		block = $('#frame_domains_show_' + domain_id + ' .tab-pane.id-mx:first')
+		flist = block.find('.skel-list')
+		rtn = block.find('.misc .format-content > table').clone()
+		tr = rtn.find('tbody tr').clone()
+		rtn.find('tbody').html('')
+		$.each data.data, (k, record) ->
+			tmptr = tr.clone()
+			tmptr.find('td:eq(0)').html record.name
+			tmptr.find('td:eq(1)').html record.priority
+			tmptr.find('td:eq(2)').html record.to_name
+			tmptr.find('td:eq(3) a').attr 'href', record.url
+			rtn.find('tbody').append tmptr
+			return
+		flist.html('').append(rtn)
+		block.find('.b-cancel').click()
+		$('#frame_domains_show_' + domain_id + ' .badge.nav-tab-head.id-mx').html(data.counts)
+		return
+	return
+
+@domain_show_nameserver_list_load = (domain_id) ->
+	$.getJSON '<%= api_domains_path %>/' + domain_id + '/nameservers', (data) ->
+		block = $('#frame_domains_show_' + domain_id + ' .tab-pane.id-nameserver:first')
+		flist = block.find('.skel-list')
+		rtn = block.find('.misc .format-content > table').clone()
+		tr = rtn.find('tbody tr').clone()
+		rtn.find('tbody').html('')
+		$.each data.data, (k, record) ->
+			tmptr = tr.clone()
+			tmptr.find('td:eq(0)').html record.name
+			tmptr.find('td:eq(1)').html record.to_ns
+			tmptr.find('td:eq(2) a').attr 'href', record.url
+			rtn.find('tbody').append tmptr
+			return
+		flist.html('').append(rtn)
+		block.find('.b-cancel').click()
+		$('#frame_domains_show_' + domain_id + ' .badge.nav-tab-head.id-nameserver').html(data.counts)
+		return
+	return
+
+@domain_show_ddn_list_load = (domain_id) ->
+	$.getJSON '<%= api_domains_path %>/' + domain_id + '/ddns', (data) ->
+		block = $('#frame_domains_show_' + domain_id + ' .tab-pane.id-ddn:first')
+		flist = block.find('.skel-list')
+		rtn = block.find('.misc .format-content > table').clone()
+		tr = rtn.find('tbody tr').clone()
+		rtn.find('tbody').html('')
+		$.each data.data, (k, record) ->
+			tmptr = tr.clone()
+			tmptr.find('td:eq(0)').html record.device_name
+			tmptr.find('td:eq(1)').html record.name
+			tmptr.find('td:eq(2)').html record.to_ip
+			tmptr.find('td:eq(3)').html record.token
+			tmptr.find('td:eq(4) a').attr 'href', record.url
+			rtn.find('tbody').append tmptr
+			return
+		flist.html('').append(rtn)
+		block.find('.b-cancel').click()
+		$('#frame_domains_show_' + domain_id + ' .badge.nav-tab-head.id-ddn').html(data.counts)
+		return
+	return
+
+@domain_show_member_list_load = (domain_id) ->
+	$.getJSON '<%= api_domains_path %>/' + domain_id + '/members', (data) ->
+		block = $('#frame_domains_show_' + domain_id + ' .tab-pane.id-member:first')
+		flist = block.find('.skel-list')
+		rtn = block.find('.misc .format-content > table').clone()
+		tr = rtn.find('tbody tr').clone()
+		rtn.find('tbody').html('')
+		$.each data.data, (k, record) ->
+			tmptr = tr.clone()
+			tmptr.find('td:eq(0)').html record.username
+			tmptr.find('td:eq(1) a').attr 'href', record.url
+			rtn.find('tbody').append tmptr
+			return
+		flist.html('').append(rtn)
+		block.find('.b-cancel').click()
+		$('#frame_domains_show_' + domain_id + ' .badge.nav-tab-head.id-member').html(data.counts)
+		return
+	return
+
+@domain_show_rm_row = (obj) ->
+	$(obj).closest('tr').remove()
+	return

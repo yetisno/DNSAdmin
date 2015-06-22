@@ -1,0 +1,31 @@
+<h3>Create User</h3>
+<div class="text-left col-xs-12">
+    <%= form_for @user, url: admin_users_path, :html => {method: :post, role: :form, class: 'form-horizontal'} do |f| %>
+        <div class="form-group">
+            <%= f.label 'Username', for: :user_username, class: 'col-xs-4 control-label' %>
+            <div class="col-xs-8"><%= f.text_field :username, class: 'form-control' %></div>
+        </div>
+        <div class="form-group">
+            <%= f.label 'Email', for: :user_email, class: 'col-xs-4 control-label' %>
+            <div class="col-xs-8"><%= f.email_field :email, class: 'form-control', placeholder: 'user@example.com' %></div>
+        </div>
+        <div class="form-group">
+            <%= f.label :admin, 'Administrator', for: :user_admin, class: 'col-xs-4 control-label' %>
+            <div class="col-xs-8"><%= f.check_box :admin %></div>
+        </div>
+        <div class="form-group">
+            <%= f.label :password, 'Password', for: :user_password, class: 'col-xs-4 control-label' %>
+            <div class="col-xs-8"><%= f.password_field :password, class: 'form-control', placeholder: @rstring %></div>
+        </div>
+        <div class="form-group">
+            <%= f.label :confirm_password, 'Confirm Password', for: :user_password_confirmation, class: 'col-xs-4 control-label' %>
+            <div class="col-xs-8"><%= f.password_field :password_confirmation, class: 'form-control', placeholder: @rstring %></div>
+        </div>
+        <div class="form-group">
+	        <div class=" text-right col-xs-12">
+	            <%= f.submit 'Create', class: 'btn btn-primary', data: {disable_with: 'Creating'} %>
+	            <%= link_to 'Back', admin_users_path, class: 'btn btn-default' %>
+	        </div>
+        </div>
+    <% end %>
+</div>
