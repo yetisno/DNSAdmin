@@ -4,4 +4,4 @@ dnsadmin:
 dnservice:
     ip: 127.0.0.1
     port: 5300
-    reload-key: <%= ENV['DNS_RELOAD_KEY'] || '547caca7265378768758d62b5542ceff6499b019c217709a3e6cc2c48416f0d3745e682083f9fb7d735d148d68944bd154f2fc09b9be614645b66cb00bb13f91' %>
+    reload-key: <%= ENV['DNS_RELOAD_KEY'] %>
