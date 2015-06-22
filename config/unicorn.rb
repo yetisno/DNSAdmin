@@ -1,4 +1,4 @@
-# ENV['RAILS_RELATIVE_URL_ROOT'] = "/dnsadmin"
+# ENV['RAILS_RELATIVE_URL_ROOT'] = "/dnsmanager"
 require 'active_record'
 require 'active_support/core_ext'
 require 'YAML'
@@ -11,7 +11,7 @@ GC.respond_to?(:copy_on_write_friendly=) and
 	GC.copy_on_write_friendly = true
 check_client_connection false
 
-listen "0.0.0.0:8080", :tcp_nopush => true
+listen "#{CONFIG['bind-ip']}:#{CONFIG['bind-port']}", :tcp_nopush => true
 pid 'unicorn.pid'
 
 before_fork do |server, worker|
