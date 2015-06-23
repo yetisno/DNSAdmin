@@ -2,6 +2,6 @@ dnsadmin:
     bind-ip: <%= ENV['WEB_BIND_IP'] || '0.0.0.0' %>
     bind-port: <%= ENV['WEB_BIND_PORT'] || '8080' %>
 dnservice:
-    ip: <%= ENV['DNS_BIND_IP'] || '0.0.0.0' %>
+    ip: <%= ENV['DNS_BIND_IP'] || '127.0.0.1' %>
     port: <%= ENV['DNS_BIND_PORT'] || '5300' %>
     reload-key: <%= ENV['DNS_RELOAD_KEY'] %>
