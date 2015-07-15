@@ -1,7 +1,7 @@
 # ENV['RAILS_RELATIVE_URL_ROOT'] = "/dnsmanager"
 require 'active_record'
 require 'active_support/core_ext'
-require 'YAML'
+require 'yaml'
 
 worker_processes Integer(ENV["WEB_CONCURRENCY"] || 1)
 timeout 60
